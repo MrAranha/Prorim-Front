@@ -4,7 +4,7 @@ import SixView from 'src/sections/Usuarios/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Fábrica de Software: Usuários',
+  title: 'Prorim: Usuários',
 };
 
 export default function Page() {

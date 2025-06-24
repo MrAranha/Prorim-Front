@@ -3,7 +3,7 @@ import TwoView from 'src/sections/two/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Fábrica de Software: Two',
+  title: 'Prorim: Two',
 };
 
 export default function Page() {

@@ -56,7 +56,7 @@ export function useNavData() {
 
           {
             subheader: 'Menu',
-            items: [{ title: 'Carros', path: paths.dashboard.root, icon: ICONS.dashboard }],
+            items: [{ title: 'Lembretes', path: paths.dashboard.root, icon: ICONS.dashboard }],
           },
 
           // MANAGEMENT
@@ -82,7 +82,7 @@ export function useNavData() {
       : [
           {
             subheader: 'Menu',
-            items: [{ title: 'Carros', path: paths.dashboard.root, icon: ICONS.dashboard }],
+            items: [{ title: 'Lembretes', path: paths.dashboard.root, icon: ICONS.dashboard }],
           },
         ];
   return data;

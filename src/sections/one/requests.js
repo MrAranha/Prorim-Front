@@ -1,21 +1,21 @@
 import {
-  changeCarroPasswords,
-  createCarros,
-  deleteCarros,
-  editCarros,
+  changeLembretePasswords,
+  createLembretes,
+  deleteLembretes,
+  editLembretes,
   fazerPedidoRequest,
-  getCarroByIDs,
-  getCarros,
+  getLembreteByIDs,
+  getLembretes,
 } from './crud';
 
-export const searchCarros = (queries, setLoading, setCarros, sendNotification) => {
+export const searchLembretes = (queries, setLoading, setLembretes, sendNotification) => {
   setLoading(true);
-  getCarros(queries)
+  getLembretes(queries)
     .then((data) => {
       if (data.data) {
-        setCarros(data.data);
+        setLembretes(data.data);
       } else {
-        setCarros([]);
+        setLembretes([]);
       }
       setLoading(false);
     })
@@ -24,9 +24,9 @@ export const searchCarros = (queries, setLoading, setCarros, sendNotification) =
       setLoading(false);
     });
 };
-export const fazerPedidoCrud = (carroid, userid, setLoading, sendNotification) => {
+export const fazerPedidoCrud = (lembreteid, userid, setLoading, sendNotification) => {
   setLoading(true);
-  fazerPedidoRequest(carroid, userid)
+  fazerPedidoRequest(lembreteid, userid)
     .then((data) => {
       debugger;
       if (data.data.id === 0) {
@@ -50,15 +50,15 @@ export const fazerPedidoCrud = (carroid, userid, setLoading, sendNotification) =
     });
 };
 
-export const createCarro = (Carro, setLoading, sendNotification, handleClose, setCarros) => {
+export const createLembrete = (Lembrete, setLoading, sendNotification, handleClose, setLembretes) => {
   setLoading(true);
-  createCarros(Carro)
+  createLembretes(Lembrete)
     .then((data) => {
-      getCarros({ id: data.data }).then((data) => {
+      getLembretes({ id: data.data }).then((data) => {
         if (data.data) {
-          setCarros(data.data);
+          setLembretes(data.data);
         } else {
-          setCarros([]);
+          setLembretes([]);
         }
         setLoading(false);
       });
@@ -71,15 +71,15 @@ export const createCarro = (Carro, setLoading, sendNotification, handleClose, se
     });
 };
 
-export const deleteCarro = (Carro, setLoading, sendNotification, handleClose, setCarros) => {
+export const deleteLembrete = (Lembrete, setLoading, sendNotification, handleClose, setLembretes) => {
   setLoading(true);
-  deleteCarros(Carro)
+  deleteLembretes(Lembrete)
     .then((data) => {
-      getCarros().then((data) => {
+      getLembretes().then((data) => {
         if (data.data) {
-          setCarros(data.data);
+          setLembretes(data.data);
         } else {
-          setCarros([]);
+          setLembretes([]);
         }
         setLoading(false);
       });
@@ -92,15 +92,15 @@ export const deleteCarro = (Carro, setLoading, sendNotification, handleClose, se
     });
 };
 
-export const editCarro = (Carro, CarroID, setLoading, sendNotification, handleClose, setCarros) => {
+export const editLembrete = (Lembrete, LembreteID, setLoading, sendNotification, handleClose, setLembretes) => {
   setLoading(true);
-  editCarros(Carro, CarroID)
+  editLembretes(Lembrete, LembreteID)
     .then((data) => {
-      getCarros({ id: Carro.id }).then((data) => {
+      getLembretes({ id: Lembrete.id }).then((data) => {
         if (data.data) {
-          setCarros(data.data);
+          setLembretes(data.data);
         } else {
-          setCarros([]);
+          setLembretes([]);
         }
         setLoading(false);
       });

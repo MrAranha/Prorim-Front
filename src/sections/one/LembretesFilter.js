@@ -2,7 +2,7 @@ import { Input, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
-export const CarrosFilter = ({ queries, setQueries }) => {
+export const LembretesFilter = ({ queries, setQueries }) => {
   return (
     <Stack direction="row" spacing={1} paddingTop={3}>
       <TextField
@@ -12,27 +12,27 @@ export const CarrosFilter = ({ queries, setQueries }) => {
         variant="outlined"
         inputProps={{ maxLength: 255 }}
         onChange={(e) => {
-          setQueries({ ...queries, Nome: e.target.value });
+          setQueries({ ...queries, nomeLembrete: e.target.value });
         }}
       />
       <TextField
         id="outlined-basic"
-        label="Ano"
+        label="Tipo Transplante"
         inputProps={{ maxLength: 4 }}
         fullWidth
         variant="outlined"
         onChange={(e) => {
-          setQueries({ ...queries, Ano: e.target.value });
+          setQueries({ ...queries, tipoTransplante: e.target.value });
         }}
       />
       <TextField
         id="outlined-basic"
         inputProps={{ maxLength: 255 }}
-        label="Marca"
+        label="Remedio"
         fullWidth
         variant="outlined"
         onChange={(e) => {
-          setQueries({ ...queries, Marca: e.target.value });
+          setQueries({ ...queries, remedio: e.target.value });
         }}
       />
     </Stack>

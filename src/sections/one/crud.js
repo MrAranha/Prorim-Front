@@ -1,15 +1,15 @@
 import axios from 'src/utils/axios';
 
-export function getCarros(queries) {
-  const response = axios.get('/api/Carros/search', { params: queries });
+export function getLembretes(queries) {
+  const response = axios.get('/api/Lembretes/search', { params: queries });
   return response;
 }
 
-export function fazerPedidoRequest(carroid, userid) {
+export function fazerPedidoRequest(lembreteid, userid) {
   const response = axios({
     method: 'put',
-    url: '/api/Carros/fazerPedido',
-    data: { user: userid, idCarro: carroid },
+    url: '/api/Lembretes/fazerPedido',
+    data: { user: userid, idLembrete: lembreteid },
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -17,15 +17,15 @@ export function fazerPedidoRequest(carroid, userid) {
   return response;
 }
 
-export function deleteCarros(user) {
-  const response = axios.delete('/api/Carros/delete', { params: { Id: user } });
+export function deleteLembretes(user) {
+  const response = axios.delete('/api/Lembretes/delete', { params: { Id: user } });
   return response;
 }
 
-export function createCarros(user) {
+export function createLembretes(user) {
   const response = axios({
     method: 'post',
-    url: '/api/Carros/save',
+    url: '/api/Lembretes/save',
     data: user,
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -34,21 +34,21 @@ export function createCarros(user) {
   return response;
 }
 
-export function getCarroByIDs(userID) {
-  const response = axios.get('/api/Carros/getById', { params: { Id: userID } });
+export function getLembreteByIDs(userID) {
+  const response = axios.get('/api/Lembretes/getById', { params: { Id: userID } });
   return response;
 }
 
-export function editCarros(carro, ID) {
+export function editLembretes(lembrete, ID) {
   const response = axios({
     method: 'put',
-    url: '/api/Carros/edit',
+    url: '/api/Lembretes/edit',
     data: {
-      Nome: carro.nome,
+      Nome: lembrete.nome,
       Id: ID,
-      Ano: carro.ano,
-      Quantidade: carro.quantidade,
-      Marca: carro.marca,
+      Ano: lembrete.ano,
+      Quantidade: lembrete.quantidade,
+      Marca: lembrete.marca,
     },
     headers: {
       'Content-Type': 'multipart/form-data',

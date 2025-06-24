@@ -1,6 +1,6 @@
 import { Box, Button, Modal, Stack, Typography } from '@mui/material';
 import * as React from 'react';
-import { deleteCarro } from './requests';
+import { deleteLembrete } from './requests';
 
 const style = {
   position: 'absolute',
@@ -14,18 +14,18 @@ const style = {
   p: 4,
 };
 
-export const DeleteCarroModal = ({
+export const DeleteLembreteModal = ({
   open,
   setOpen,
   sendNotification,
   setLoading,
-  setCarros,
-  CarroID,
-  setCarroID,
+  setLembretes,
+  LembreteID,
+  setLembreteID,
 }) => {
   const handleClose = (event, reason) => {
     setOpen(false);
-    setCarroID('');
+    setLembreteID('');
   };
 
   return (
@@ -40,7 +40,7 @@ export const DeleteCarroModal = ({
           Deletar
         </Typography>
         <Typography id="keep-mounted-modal-title" variant="h6" component="h2" paddingTop={1}>
-          Tem certeza que deseja deletar o usuário?
+          Tem certeza que deseja deletar o lembrete?
         </Typography>
         <Stack
           paddingTop={3}
@@ -56,7 +56,7 @@ export const DeleteCarroModal = ({
             color="secondary"
             variant="contained"
             onClick={() => {
-              deleteCarro(CarroID, setLoading, sendNotification, handleClose, setCarros);
+              deleteLembrete(LembreteID, setLoading, sendNotification, handleClose, setLembretes);
             }}
           >
             Deletar

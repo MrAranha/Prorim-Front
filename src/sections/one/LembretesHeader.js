@@ -1,15 +1,15 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import Iconify from 'src/components/iconify';
-import { getCarros } from './requests';
+import { getLembretes } from './requests';
 import { localStorageGetItem } from 'src/utils/storage-available';
 
-export const CarrosHeader = ({ getCarros, handleOpenNewModal }) => {
+export const LembretesHeader = ({ getLembretes, handleOpenNewModal }) => {
   const role = localStorageGetItem('role');
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2}>
       <Stack container spacing={1}>
         <Box align="left">
-          <Typography variant="h4"> Carros </Typography>
+          <Typography variant="h4"> Lembretes </Typography>
         </Box>
       </Stack>
       <Stack direction="row" justifyContent="flex-end" alignItems="flex-start" spacing={1}>
@@ -19,7 +19,7 @@ export const CarrosHeader = ({ getCarros, handleOpenNewModal }) => {
             direction="row-reverse"
             endIcon={<Iconify width={24} icon={'mdi:magnify'} />}
             onClick={() => {
-              getCarros();
+              getLembretes();
             }}
           >
             Buscar

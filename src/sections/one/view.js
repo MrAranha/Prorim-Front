@@ -1,17 +1,17 @@
 'use client';
 import Container from '@mui/material/Container';
-import { CarrosTable } from './CarrosTable';
+import { LembretesTable } from './LembretesTable';
 import { useSettingsContext } from 'src/components/settings';
-import { CarrosFilter } from './CarrosFilter';
-import { CarrosHeader } from './CarrosHeader';
+import { LembretesFilter } from './LembretesFilter';
+import { LembretesHeader } from './LembretesHeader';
 import { useEffect, useState } from 'react';
-import { fazerPedidoCrud, searchCarros } from './requests';
-import { getCarros } from './crud';
+import { fazerPedidoCrud, searchLembretes } from './requests';
+import { getLembretes } from './crud';
 import useNotification from 'src/theme/overrides/components/AlertMessage';
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
-import { NewCarroModal } from './NewCarroModal';
-import { DeleteCarroModal } from './DeleteCarroModal';
-import { EditCarroForm } from './EditCarroModal';
+import { NewLembreteModal } from './NewLembreteModal';
+import { DeleteLembreteModal } from './DeleteLembreteModal';
+import { EditLembreteForm } from './EditLembreteModal';
 import { localStorageGetItem } from 'src/utils/storage-available';
 
 // ----------------------------------------------------------------------
@@ -23,27 +23,27 @@ export default function OneView() {
   };
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openTrocarSenhaModal, setOpenTrocarSenhaModal] = useState(false);
-  const [openEditCarroModal, setOpenEditCarroModal] = useState(false);
-  const [CarroID, setCarroID] = useState('');
+  const [openEditLembreteModal, setOpenEditLembreteModal] = useState(false);
+  const [LembreteID, setLembreteID] = useState('');
   const [msg, sendNotification] = useNotification();
   const settings = useSettingsContext();
-  const [Carros, setCarros] = useState([]);
+  const [Lembretes, setLembretes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [queries, setQueries] = useState({
-    Nome: '',
-    Ano: '',
-    Marca: '',
+    nomeLembrete: '',
+    tipoTransplante: '',
+    remedio: '',
   });
   const role = localStorageGetItem('role');
 
   useEffect(() => {
     setLoading(true);
-    getCarros(queries)
+    getLembretes(queries)
       .then((data) => {
         if (data.data) {
-          setCarros(data.data);
+          setLembretes(data.data);
         } else {
-          setCarros([]);
+          setLembretes([]);
         }
         setLoading(false);
       })
@@ -53,51 +53,51 @@ export default function OneView() {
       });
   }, []);
 
-  const getCarrosFilter = () => {
-    searchCarros(queries, setLoading, setCarros, sendNotification);
+  const getLembretesFilter = () => {
+    searchLembretes(queries, setLoading, setLembretes, sendNotification);
   };
-  const fazerPedido = (carroid, userid) => {
-    fazerPedidoCrud(carroid, userid, setLoading, sendNotification);
+  const fazerPedido = (lembreteid, userid) => {
+    fazerPedidoCrud(lembreteid, userid, setLoading, sendNotification);
   };
   return (
     <Container maxWidth={settings.themeStretch ? false : 'xl'}>
       <SnackbarProvider />
-      <CarrosHeader getCarros={getCarrosFilter} handleOpenNewModal={handleOpenNewModal} />
-      <NewCarroModal
+      <LembretesHeader getLembretes={getLembretesFilter} handleOpenNewModal={handleOpenNewModal} />
+      <NewLembreteModal
         open={openNewModal}
         setOpen={setOpenNewModal}
         sendNotification={sendNotification}
         setLoading={setLoading}
-        setCarros={setCarros}
+        setLembretes={setLembretes}
       />
-      <CarrosFilter queries={queries} setQueries={setQueries} />
-      <CarrosTable
-        rows={Carros}
+      <LembretesFilter queries={queries} setQueries={setQueries} />
+      <LembretesTable
+        rows={Lembretes}
         role={role}
         loading={loading}
-        setOpenEditModal={setOpenEditCarroModal}
+        setOpenEditModal={setOpenEditLembreteModal}
         setOpenDeleteModal={setOpenDeleteModal}
-        setCarroID={setCarroID}
+        setLembreteID={setLembreteID}
         setOpenTrocarSenhaModal={setOpenTrocarSenhaModal}
         fazerPedido={fazerPedido}
       />
-      <DeleteCarroModal
+      <DeleteLembreteModal
         open={openDeleteModal}
         setOpen={setOpenDeleteModal}
         sendNotification={sendNotification}
         setLoading={setLoading}
-        setCarros={setCarros}
-        CarroID={CarroID}
-        setCarroID={setCarroID}
+        setLembretes={setLembretes}
+        LembreteID={LembreteID}
+        setLembreteID={setLembreteID}
       />
-      <EditCarroForm
-        open={openEditCarroModal}
-        setOpen={setOpenEditCarroModal}
+      <EditLembreteForm
+        open={openEditLembreteModal}
+        setOpen={setOpenEditLembreteModal}
         sendNotification={sendNotification}
         setLoading={setLoading}
-        setCarros={setCarros}
-        CarroID={CarroID}
-        setCarroID={setCarroID}
+        setLembretes={setLembretes}
+        LembreteID={LembreteID}
+        setLembreteID={setLembreteID}
       />
     </Container>
   );

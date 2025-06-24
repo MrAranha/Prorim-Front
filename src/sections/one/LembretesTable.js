@@ -4,11 +4,11 @@ import { LoadingScreen } from 'src/components/loading-screen';
 import Iconify from 'src/components/iconify';
 import { localStorageGetItem } from 'src/utils/storage-available';
 
-export const CarrosTable = ({
+export const LembretesTable = ({
   rows,
   loading,
   setOpenDeleteModal,
-  setCarroID,
+  setLembreteID,
   role,
   setOpenEditModal,
   fazerPedido,
@@ -26,14 +26,14 @@ export const CarrosTable = ({
               <GridActionsCellItem
                 icon={<Iconify width={24} icon={'mdi:pencil'} />}
                 onClick={() => {
-                  setCarroID(params.row['id']);
+                  setLembreteID(params.row['id']);
                   setOpenEditModal(true);
                 }}
                 label="Editar"
               />,
               <GridActionsCellItem
                 onClick={() => {
-                  setCarroID(params.row['id']);
+                  setLembreteID(params.row['id']);
                   setOpenDeleteModal(true);
                 }}
                 icon={<GridDeleteIcon />}
@@ -48,10 +48,11 @@ export const CarrosTable = ({
               />,
             ],
           },
-          { field: 'nome', headerName: 'Nome', width: 500 },
-          { field: 'marca', headerName: 'Marca', width: 500 },
-          { field: 'ano', headerName: 'Ano', width: 500 },
-          { field: 'quantidade', headerName: 'Quantidade', width: 500 },
+          { field: 'nomeLembrete', headerName: 'Nome do Lembrete', width: 250 },
+          { field: 'DataLembrete', headerName: 'Data do Lembrete', width: 200 },
+          { field: 'clienteID', headerName: 'Cliente ID', width: 200 },
+          { field: 'tipoTransplante', headerName: 'Tipo de Transplante', width: 200 },
+          { field: 'remedio', headerName: 'Remédio', width: 200 },
         ]
       : [
           {
@@ -68,10 +69,11 @@ export const CarrosTable = ({
               />,
             ],
           },
-          { field: 'nome', headerName: 'Nome', width: 500 },
-          { field: 'marca', headerName: 'Marca', width: 500 },
-          { field: 'ano', headerName: 'Ano', width: 500 },
-          { field: 'quantidade', headerName: 'Quantidade', width: 500 },
+          { field: 'nomeLembrete', headerName: 'Nome do Lembrete', width: 250 },
+          { field: 'DataLembrete', headerName: 'Data do Lembrete', width: 200 },
+          { field: 'clienteID', headerName: 'Cliente ID', width: 200 },
+          { field: 'tipoTransplante', headerName: 'Tipo de Transplante', width: 200 },
+          { field: 'remedio', headerName: 'Remédio', width: 200 },
         ];
 
   return (

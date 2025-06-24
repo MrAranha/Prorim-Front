@@ -24,7 +24,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'Fábrica de Software',
+  title: 'Prorim',
   description:
     'The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI ©, ready to be customized to your style',
   keywords: 'react,material,kit,application,dashboard,admin,template',

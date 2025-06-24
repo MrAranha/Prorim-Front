@@ -3,7 +3,7 @@ import OneView from 'src/sections/one/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Fábrica de Software: One',
+  title: 'Prorim: One',
 };
 
 export default function Page() {
