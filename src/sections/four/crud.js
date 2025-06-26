@@ -30,6 +30,10 @@ export function createLaudos(laudo) {
   });
 }
 
+export function getAllLaudos(params = {}) {
+  const response = axios.get('/api/Laudos/getall', { params });
+  return response;
+}
 export function getLaudoByIDs(laudoID) {
   return axios.get('/api/Laudos/getById', { params: { Id: laudoID } });
 }

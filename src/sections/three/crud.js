@@ -15,6 +15,10 @@ export function fazerDownloadRequest(receituarioid) {
   });
 }
 
+export function getAllReceitas(params = {}) {
+  const response = axios.get('/api/Receituario/getall', { params });
+  return response;
+}
 export function deleteReceituarios(id) {
   return axios.delete('/api/Receituario/delete', { params: { Id: id } });
 }

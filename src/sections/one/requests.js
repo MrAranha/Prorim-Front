@@ -24,6 +24,8 @@ export const searchLembretes = (queries, setLoading, setLembretes, sendNotificat
       setLoading(false);
     });
 };
+
+
 export const fazerPedidoCrud = (lembreteid, userid, setLoading, sendNotification) => {
   setLoading(true);
   fazerPedidoRequest(lembreteid, userid)

@@ -3,6 +3,9 @@ import { useFormik } from 'formik';
 import * as React from 'react';
 import * as yup from 'yup';
 import { createLembrete } from './requests';
+import GetUsersOptions from './GetUsersOptions';
+import GetLaudosOptions from '../four/GetLaudosOptions';
+import GetReceitasOptions from '../three/GetReceitasOptions';
 
 const style = {
   position: 'absolute',
@@ -83,7 +86,7 @@ export const NewLembreteModal = ({ open, setOpen, sendNotification, setLoading, 
               error={formik.touched.DataLembrete && Boolean(formik.errors.DataLembrete)}
               helperText={formik.touched.DataLembrete && formik.errors.DataLembrete}
             />
-            <TextField
+            <GetUsersOptions
               fullWidth
               id="clienteID"
               name="clienteID"
@@ -95,7 +98,7 @@ export const NewLembreteModal = ({ open, setOpen, sendNotification, setLoading, 
               error={formik.touched.clienteID && Boolean(formik.errors.clienteID)}
               helperText={formik.touched.clienteID && formik.errors.clienteID}
             />
-            <TextField
+            <GetLaudosOptions
               fullWidth
               id="tipoTransplante"
               name="tipoTransplante"
@@ -107,7 +110,7 @@ export const NewLembreteModal = ({ open, setOpen, sendNotification, setLoading, 
               error={formik.touched.tipoTransplante && Boolean(formik.errors.tipoTransplante)}
               helperText={formik.touched.tipoTransplante && formik.errors.tipoTransplante}
             />
-            <TextField
+            <GetReceitasOptions
               fullWidth
               id="remedio"
               name="remedio"

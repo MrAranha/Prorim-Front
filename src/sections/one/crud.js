@@ -34,6 +34,12 @@ export function createLembretes(user) {
   return response;
 }
 
+
+export function getAllUsers(params = {}) {
+  const response = axios.get('/api/Users/getall', { params });
+  return response;
+}
+
 export function getLembreteByIDs(userID) {
   const response = axios.get('/api/Lembretes/getById', { params: { Id: userID } });
   return response;

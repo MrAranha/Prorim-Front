@@ -39,13 +39,6 @@ export const LembretesTable = ({
                 icon={<GridDeleteIcon />}
                 label="Deletar"
               />,
-              <GridActionsCellItem
-                onClick={() => {
-                  fazerPedido(params.row['id'], userid);
-                }}
-                icon={<Iconify width={24} icon={'mdi:exclamation'} />}
-                label="Estou Interessado!"
-              />,
             ],
           },
           { field: 'nomeLembrete', headerName: 'Nome do Lembrete', width: 250 },
