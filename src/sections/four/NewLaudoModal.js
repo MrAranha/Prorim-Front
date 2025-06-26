@@ -21,6 +21,7 @@ export const NewLaudoModal = ({ open, setOpen, sendNotification, setLoading, set
     nomeMedico: yup.string('Insira o nome do médico').required('Nome do médico é obrigatório'),
     nomeArquivo: yup.string('Insira o nome do arquivo').required('Nome do arquivo é obrigatório'),
     idPaciente: yup.string('Insira o ID do paciente').required('ID do paciente é obrigatório'),
+    nomeReceita: yup.string('Insira o nome da receita').required('Nome da receita é obrigatório'),
   });
 
   const formik = useFormik({
@@ -28,10 +29,20 @@ export const NewLaudoModal = ({ open, setOpen, sendNotification, setLoading, set
       nomeMedico: '',
       nomeArquivo: '',
       idPaciente: '',
+      nomeReceita: '',
+      arquivo: null,
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      createLaudo(values, setLoading, sendNotification, handleClose, setLaudos);
+    onSubmit: async (values) => {
+      const formData = new FormData();
+      formData.append('nomeMedico', values.nomeMedico);
+      formData.append('nomeArquivo', values.nomeArquivo);
+      formData.append('idPaciente', values.idPaciente);
+      formData.append('nomeReceita', values.nomeReceita);
+      if (values.arquivo) {
+        formData.append('pdf', values.arquivo);
+      }
+      createLaudo(formData, setLoading, sendNotification, handleClose, setLaudos);
     },
   });
 
@@ -68,18 +79,6 @@ export const NewLaudoModal = ({ open, setOpen, sendNotification, setLoading, set
             />
             <TextField
               fullWidth
-              id="nomeArquivo"
-              name="nomeArquivo"
-              label="Nome do Arquivo"
-              inputProps={{ maxLength: 255 }}
-              value={formik.values.nomeArquivo}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.nomeArquivo && Boolean(formik.errors.nomeArquivo)}
-              helperText={formik.touched.nomeArquivo && formik.errors.nomeArquivo}
-            />
-            <TextField
-              fullWidth
               id="idPaciente"
               name="idPaciente"
               label="ID do Paciente"
@@ -90,6 +89,41 @@ export const NewLaudoModal = ({ open, setOpen, sendNotification, setLoading, set
               error={formik.touched.idPaciente && Boolean(formik.errors.idPaciente)}
               helperText={formik.touched.idPaciente && formik.errors.idPaciente}
             />
+            <TextField
+              fullWidth
+              id="nomeReceita"
+              name="nomeReceita"
+              label="Nome da Receita"
+              inputProps={{ maxLength: 255 }}
+              value={formik.values.nomeReceita}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.nomeReceita && Boolean(formik.errors.nomeReceita)}
+              helperText={formik.touched.nomeReceita && formik.errors.nomeReceita}
+            />
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{ alignSelf: 'center', height: '56px' }}
+            >
+              Upload Arquivo
+              <input
+                type="file"
+                hidden
+                accept="*"
+                onChange={(event) => {
+                  if (event.currentTarget.files && event.currentTarget.files[0]) {
+                    formik.setFieldValue('arquivo', event.currentTarget.files[0]);
+                    formik.setFieldValue('nomeArquivo', event.currentTarget.files[0].name);
+                  }
+                }}
+              />
+            </Button>
+            {formik.values.arquivo && (
+              <Typography variant="body2" sx={{ alignSelf: 'center', ml: 1 }}>
+                {formik.values.arquivo.name}
+              </Typography>
+            )}
           </Stack>
           <Stack
             paddingTop={3}

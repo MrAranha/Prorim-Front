@@ -11,7 +11,6 @@ export const LaudosTable = ({
   setLaudoID,
   role,
   setOpenEditModal,
-  fazerPedido,
   fazerDownload,
 }) => {
   const [pageSize, setPageSize] = useState(20);
@@ -53,6 +52,7 @@ export const LaudosTable = ({
           { field: 'nomeMedico', headerName: 'Nome do Médico', width: 250 },
           { field: 'nomeArquivo', headerName: 'Nome do Arquivo', width: 250 },
           { field: 'idPaciente', headerName: 'ID do Paciente', width: 200 },
+          { field: 'nomeReceita', headerName: 'Nome da Receita', width: 200 },
         ]
       : [
           {
@@ -73,6 +73,7 @@ export const LaudosTable = ({
           { field: 'nomeMedico', headerName: 'Nome do Médico', width: 250 },
           { field: 'nomeArquivo', headerName: 'Nome do Arquivo', width: 250 },
           { field: 'idPaciente', headerName: 'ID do Paciente', width: 200 },
+          { field: 'nomeReceita', headerName: 'Nome da Receita', width: 200 },
         ];
 
   return (

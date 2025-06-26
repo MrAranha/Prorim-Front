@@ -44,7 +44,6 @@ export default function HeaderSimple() {
           }),
         }}
       >
-        <Logo />
 
         <Stack direction="row" alignItems="center" spacing={1}>
           <SettingsButton />
