@@ -3,7 +3,7 @@ import FourView from 'src/sections/four/view';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Dotta: Four',
+  title: 'Laudos',
 };
 
 export default function Page() {

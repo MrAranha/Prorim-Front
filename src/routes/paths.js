@@ -22,6 +22,8 @@ export const paths = {
     one: `${ROOTS.DASHBOARD}/one`,
     two: `${ROOTS.DASHBOARD}/two`,
     three: `${ROOTS.DASHBOARD}/three`,
+    laudos: `${ROOTS.DASHBOARD}/laudos`,
+    receituario: `${ROOTS.DASHBOARD}/receituario`,
     group: {
       root: `${ROOTS.DASHBOARD}/group`,
       five: `${ROOTS.DASHBOARD}/group/five`,

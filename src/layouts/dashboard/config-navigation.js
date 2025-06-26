@@ -74,6 +74,16 @@ export function useNavData() {
                     path: paths.dashboard.group.usuarios,
                     icon: ICONS.gear,
                   },
+                  {
+                    title: 'Laudos',
+                    path: paths.dashboard.laudos,
+                    icon: ICONS.gear,
+                  },
+                  {
+                    title: 'Receituário',
+                    path: paths.dashboard.receituario,
+                    icon: ICONS.gear,
+                  },
                 ],
               },
             ],
